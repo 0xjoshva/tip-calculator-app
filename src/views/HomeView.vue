@@ -67,10 +67,22 @@
         </label>
       </div>
       <div class="right">
-        <div class="tipamount">
-          <input type="text" placeholder="0.00"/>
+        <div class="inputs">
+        <div class="tippp totals">
+          <div class="col">
+            <h3>Tip Amount</h3>
+            <span>/ person</span>
+          </div>
+          <input type="text" placeholder="$0.00"/>
         </div>
-        <div></div>
+        <div class="totalpp totals">
+          <div class="col">
+            <h3>Total</h3>
+            <span>/ person</span>
+          </div>
+          <input type="text" placeholder="$0.00"/>
+        </div>
+        </div>
         <button class="reset-btn" :disabled="isDisabled">RESET</button>
       </div>
     </div>
@@ -177,6 +189,15 @@ h1 {
   background: var(--vdcyan);
   border-radius: 20px;
   padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  row-gap: 2rem;
+  justify-content: space-between;
+}
+.inputs{
+   display: flex;
+  flex-direction: column;
+  row-gap: 2rem;
 }
 .reset-btn {
   width: 100%;
@@ -196,5 +217,37 @@ h1 {
 }
 .reset-btn:enabled:hover {
   background: var(--lgcyan);
+}
+.col{
+  display: flex;
+  flex-direction: column;
+}
+.col h3{
+  color: var(--white);
+}
+.col span{
+  color: var(--gcyan);
+  font-weight: 600;
+}
+.totals{
+  display: flex; 
+  width: 100%;
+  justify-content: space-between;
+  
+}
+.right input{
+  background: var(--vdcyan);
+  border: none;
+  outline: none;
+color: var(--scyan);
+ font-weight: 700;
+ font-size: 3rem;
+ width: 10rem;
+ height: fit-content;
+}
+.right input::placeholder{
+  color: var(--scyan);
+ 
+
 }
 </style>
