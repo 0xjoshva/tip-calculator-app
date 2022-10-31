@@ -47,6 +47,7 @@ Users should be able to:
 ### What I learned
 
 - learnt how to reset the `data(){}` property in vue.
+  
   ```js
   export default {
     data() {
@@ -69,8 +70,8 @@ Users should be able to:
   };
   ```
 
-````
 - learnt about the `:maxlength` property in Vue.js
+  
 ```html
 <input type="text" placeholder="0" v-model="bill" :maxlength="3"/>
 ````
