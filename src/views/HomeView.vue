@@ -306,6 +306,7 @@ h1 {
     padding-right: 2rem;
     padding-left: 2rem;
     row-gap: 1rem;
+    padding-bottom: 2rem;
   }
   .container{
     display: flex;
@@ -314,6 +315,7 @@ h1 {
     min-width: fit-content;
     width: fit-content;
     padding: 1rem;
+    row-gap: 2rem;
   }
   .right{
     width: fit-content;
@@ -323,6 +325,7 @@ h1 {
     width: fit-content;
     padding-top: 0;
     row-gap: 1rem;
+    padding: 0.4rem;
   }
   .left label{
 
