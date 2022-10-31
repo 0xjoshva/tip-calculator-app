@@ -8,7 +8,7 @@
       <div class="left">
         <label for="">
           <p>Bill</p>
-          <input type="text" placeholder="0" v-model="bill" :maxlength="4"/>
+          <input type="text" placeholder="0" v-model="bill" :maxlength="4" pattern="\d*"/>
         </label>
         <label for="">
           <p>Select Tip %</p>
@@ -63,13 +63,14 @@
                 placeholder="Custom"
                 v-model="tip"
                 :maxlength="3"
+                pattern="\d*"
               />
             </div>
           </div>
         </label>
         <label for="">
           <p>Number of People</p>
-          <input type="text" placeholder="0" v-model="noOfPeople" @focusin="isDisabled = false" :maxlength="2"/>
+          <input type="text" placeholder="0" v-model="noOfPeople" @focusin="isDisabled = false" :maxlength="2" pattern="\d*"/>
         </label>
       </div>
       <div class="right">
