@@ -8,10 +8,10 @@
       <div class="left">
         <label for="">
           <p>Bill</p>
-          <input type="text" placeholder="0" v-model="bill" />
+          <input type="text" placeholder="0" v-model="bill" :maxlength="3"/>
         </label>
         <label for="">
-          <p>Select Tip%</p>
+          <p>Select Tip %</p>
           <div class="radio-buttons">
             <div class="radiodiv">
               <button
@@ -62,13 +62,14 @@
                 type="text"
                 placeholder="Custom"
                 v-model="tip"
+                :maxlength="3"
               />
             </div>
           </div>
         </label>
         <label for="">
           <p>Number of People</p>
-          <input type="text" placeholder="0" v-model="noOfPeople" />
+          <input type="text" placeholder="0" v-model="noOfPeople" @focusin="isDisabled = false" :maxlength="2"/>
         </label>
       </div>
       <div class="right">
@@ -115,6 +116,7 @@ export default {
         tip: null,
         bill: null,
         noOfPeople: null,
+        
       };
     },
     reset() {
