@@ -8,7 +8,7 @@
       <div class="left">
         <label for="">
           <p>Bill</p>
-          <input type="text" placeholder="0" v-model="bill" :maxlength="3"/>
+          <input type="text" placeholder="0" v-model="bill" :maxlength="4"/>
         </label>
         <label for="">
           <p>Select Tip %</p>
@@ -135,7 +135,7 @@ section {
   height: 100vh;
   background: var(--lgcyan);
   flex-direction: column;
-  gap: 4rem;
+  gap: 2.5rem;
   font-family: "Space Mono", monospace;
 }
 h1 {
@@ -146,7 +146,7 @@ h1 {
 .container {
   background: var(--white);
   border-radius: 26px;
-  width: 60rem;
+  width: 63rem;
   height: 30rem;
   box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.13);
   display: flex;
@@ -172,6 +172,7 @@ h1 {
   display: flex;
   flex-direction: column;
   row-gap: 1rem;
+  
 }
 .radio-btn {
   font-size: 24px;
@@ -183,6 +184,8 @@ h1 {
   border-radius: 5px;
   width: 30%;
   padding-block: 0.4rem;
+  transition: .2s cubic-bezier(0.65, 0.05, 0.36, 1) all;
+  cursor: pointer;
 }
 .radiodiv {
   display: flex;
@@ -200,9 +203,15 @@ h1 {
   width: 100%;
   background: var(--vlgcyan);
   border-radius: 5px;
-  padding: 0.2rem;
+  padding: 0.4rem;
   padding-left: 1rem;
   padding-right: 1rem;
+  border: 2px solid transparent;
+  transition: .2s ease-in-out all;
+  text-align: right;
+}
+.left input:focus{
+  border: 2px solid var(--scyan);
 }
 .checked {
   color: var(--vdcyan);
@@ -236,9 +245,11 @@ h1 {
 .reset-btn:enabled {
   color: var(--vdcyan);
   background: var(--scyan);
+   cursor: pointer;
 }
 .reset-btn:disabled {
   filter: opacity(1);
+  cursor: not-allowed;
 }
 .reset-btn:enabled:hover {
   background: var(--lgcyan);
@@ -266,8 +277,10 @@ h1 {
   color: var(--scyan);
   font-weight: 700;
   font-size: 3rem;
-  width: 13rem;
+  min-width: 13rem;
+  width: fit-content;
   height: fit-content;
+  text-align: right;
 }
 .right input::placeholder {
   color: var(--scyan);
@@ -277,5 +290,9 @@ h1 {
   color: var(--vdcyan);
 }
 .custom::placeholder {
+  text-align: center;
+}
+.custom{
+  cursor: text;
 }
 </style>
