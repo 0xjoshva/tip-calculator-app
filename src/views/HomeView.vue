@@ -57,7 +57,12 @@
               >
                 50%
               </button>
-              <input class="radio-btn custom" type="text" placeholder="Custom" v-model="tip">
+              <input
+                class="radio-btn custom"
+                type="text"
+                placeholder="Custom"
+                v-model="tip"
+              />
             </div>
           </div>
         </label>
@@ -73,21 +78,23 @@
               <h3>Tip Amount</h3>
               <span>/ person</span>
             </div>
-            <p type="text" id="totalinputs">${{ (bill * tip / 100 / noOfPeople).toFixed(2) }}</p>
+            <p type="text" id="totalinputs">
+              ${{ ((bill * tip) / 100 / noOfPeople).toFixed(2) }}
+            </p>
           </div>
           <div class="totalpp totals">
             <div class="col">
               <h3>Total</h3>
               <span>/ person</span>
             </div>
-            <p type="text" id="totalinputs" @focus="isDisabled = false">${{ (bill / noOfPeople + bill * tip / 100 / noOfPeople).toFixed(2)  }}</p>
+            <p type="text" id="totalinputs" @focus="isDisabled = false">
+              ${{
+                (bill / noOfPeople + (bill * tip) / 100 / noOfPeople).toFixed(2)
+              }}
+            </p>
           </div>
         </div>
-        <button
-          class="reset-btn"
-          :disabled="isDisabled"
-          @click="resetWindow()"
-        >
+        <button class="reset-btn" :disabled="isDisabled" @click="reset()">
           RESET
         </button>
       </div>
@@ -98,23 +105,23 @@
 <script>
 export default {
   data() {
-    return {
-      isChecked: false,
-      isDisabled: false,
-      tip: null,
-      bill: null,
-      noOfPeople: null,
-      personalTip: 0,
-      personalTotal: 0,
-    }
+    return this.initialState();
   },
   methods: {
-    resetWindow(){
-     this.$data = this.initialDataConfiguration;
-
-    }
-  }
-}
+    initialState() {
+      return {
+        isChecked: false,
+        isDisabled: true,
+        tip: null,
+        bill: null,
+        noOfPeople: null,
+      };
+    },
+    reset() {
+      Object.assign(this.$data, this.initialState());
+    },
+  },
+};
 </script>
 
 <style>
@@ -263,11 +270,10 @@ h1 {
 .right input::placeholder {
   color: var(--scyan);
 }
-.radiodiv input{
+.radiodiv input {
   width: 30%;
   color: var(--vdcyan);
 }
-.custom::placeholder{
-
+.custom::placeholder {
 }
 </style>
