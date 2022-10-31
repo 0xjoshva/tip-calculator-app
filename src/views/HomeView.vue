@@ -8,7 +8,7 @@
       <div class="left">
         <label for="">
           <p>Bill</p>
-          <input type="text" placeholder="0" />
+          <input type="text" placeholder="0" v-model="bill" />
         </label>
         <label for="">
           <p>Select Tip%</p>
@@ -17,7 +17,7 @@
               <button
                 class="radio-btn"
                 value="5"
-                @click="(isChecked = true), (tip = 5)"
+                @click="(isChecked = true), (tip = 5), totalTip()"
                 :class="{ checked: tip === 5 }"
               >
                 5%
@@ -57,33 +57,39 @@
               >
                 50%
               </button>
-              <button class="radio-btn custom">Custom</button>
+              <input class="radio-btn custom" type="text" placeholder="Custom" v-model="tip">
             </div>
           </div>
         </label>
         <label for="">
           <p>Number of People</p>
-          <input type="text" placeholder="0" />
+          <input type="text" placeholder="0" v-model="noOfPeople" />
         </label>
       </div>
       <div class="right">
         <div class="inputs">
-        <div class="tippp totals">
-          <div class="col">
-            <h3>Tip Amount</h3>
-            <span>/ person</span>
+          <div class="tippp totals">
+            <div class="col">
+              <h3>Tip Amount</h3>
+              <span>/ person</span>
+            </div>
+            <p type="text" id="totalinputs">${{ (bill * tip / 100 / noOfPeople).toFixed(2) }}</p>
           </div>
-          <input type="text" placeholder="$0.00"/>
-        </div>
-        <div class="totalpp totals">
-          <div class="col">
-            <h3>Total</h3>
-            <span>/ person</span>
+          <div class="totalpp totals">
+            <div class="col">
+              <h3>Total</h3>
+              <span>/ person</span>
+            </div>
+            <p type="text" id="totalinputs" @focus="isDisabled = false">${{ (bill / noOfPeople + bill * tip / 100 / noOfPeople).toFixed(2)  }}</p>
           </div>
-          <input type="text" placeholder="$0.00"/>
         </div>
-        </div>
-        <button class="reset-btn" :disabled="isDisabled">RESET</button>
+        <button
+          class="reset-btn"
+          :disabled="isDisabled"
+          @click="resetWindow()"
+        >
+          RESET
+        </button>
       </div>
     </div>
   </section>
@@ -93,12 +99,22 @@
 export default {
   data() {
     return {
-      tip: 0,
       isChecked: false,
-      isDisabled: true,
-    };
+      isDisabled: false,
+      tip: null,
+      bill: null,
+      noOfPeople: null,
+      personalTip: 0,
+      personalTotal: 0,
+    }
   },
-};
+  methods: {
+    resetWindow(){
+     this.$data = this.initialDataConfiguration;
+
+    }
+  }
+}
 </script>
 
 <style>
@@ -194,8 +210,8 @@ h1 {
   row-gap: 2rem;
   justify-content: space-between;
 }
-.inputs{
-   display: flex;
+.inputs {
+  display: flex;
   flex-direction: column;
   row-gap: 2rem;
 }
@@ -206,48 +222,52 @@ h1 {
   font-weight: 700;
   border: none;
   outline: none;
-  padding-block: .3rem;
+  padding-block: 0.3rem;
 }
 .reset-btn:enabled {
   color: var(--vdcyan);
   background: var(--scyan);
 }
 .reset-btn:disabled {
-  filter: opacity(0.4);
+  filter: opacity(1);
 }
 .reset-btn:enabled:hover {
   background: var(--lgcyan);
 }
-.col{
+.col {
   display: flex;
   flex-direction: column;
 }
-.col h3{
+.col h3 {
   color: var(--white);
 }
-.col span{
+.col span {
   color: var(--gcyan);
   font-weight: 600;
 }
-.totals{
-  display: flex; 
+.totals {
+  display: flex;
   width: 100%;
   justify-content: space-between;
-  
 }
-.right input{
+#totalinputs {
   background: var(--vdcyan);
   border: none;
   outline: none;
-color: var(--scyan);
- font-weight: 700;
- font-size: 3rem;
- width: 10rem;
- height: fit-content;
-}
-.right input::placeholder{
   color: var(--scyan);
- 
+  font-weight: 700;
+  font-size: 3rem;
+  width: 13rem;
+  height: fit-content;
+}
+.right input::placeholder {
+  color: var(--scyan);
+}
+.radiodiv input{
+  width: 30%;
+  color: var(--vdcyan);
+}
+.custom::placeholder{
 
 }
 </style>
