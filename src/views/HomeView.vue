@@ -295,4 +295,50 @@ h1 {
 .custom{
   cursor: text;
 }
+
+@media only screen and (max-width: 1200px){
+    /*Tablets [601px -> 1200px]*/
+}
+@media only screen and (max-width: 600px){
+	/*Big smartphones [426px -> 600px]*/
+  section{
+    height: fit-content;
+    padding-right: 2rem;
+    padding-left: 2rem;
+    row-gap: 1rem;
+  }
+  .container{
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    min-width: fit-content;
+    width: fit-content;
+    padding: 1rem;
+  }
+  .right{
+    width: fit-content;
+    padding: 1rem;
+  }
+  .left{
+    width: fit-content;
+    padding-top: 0;
+    row-gap: 1rem;
+  }
+  .left label{
+
+  }
+  .totals h3{
+font-size: 1rem;
+white-space: nowrap;
+  }
+  .totals span{
+
+  }
+  #totalinputs{
+    font-size: 2rem;
+  }
+}
+@media only screen and (max-width: 425px){
+	/*Small smartphones [325px -> 425px]*/
+}
 </style>
