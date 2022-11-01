@@ -307,7 +307,8 @@ h1 {
     padding-right: 2rem;
     padding-left: 2rem;
     row-gap: 1rem;
-    padding-bottom: 2rem;
+    padding-top: 2rem;
+    padding-bottom: 3rem;
   }
   .container{
     display: flex;
